@@ -8,6 +8,7 @@ $config = [
     'bootstrap' => ['log'],
     'language' => 'ru',
     'charset' => 'UTF-8',
+    'timeZone' => 'GMT+4',
 //    'charset' => 'windows-1251', // why error 500??
     'components' => [
         'request' => [
@@ -45,6 +46,10 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+	'db2' => [
+	    'class' => 'yii\db\Connection',
+	    'dsn' => 'sqlite:'.dirname(__DIR__).'/../db.sqlite',
+	]
     ],
     'params' => $params,
 ];
@@ -56,12 +61,13 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module'
     ];
-    $config['modules']['debug']['allowedIPs'] = ['*'];
+    $config['modules']['debug']['allowedIPs'] = ['178.205.223.*'];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
     ];
+    $config['modules']['gii']['allowedIPs'] = ['*'];
 
 }
 

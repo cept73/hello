@@ -37,6 +37,10 @@ class SiteController extends Controller
     public function actions()
     {
         return [
+	    'pages' => [
+                'class' => 'yii\web\ViewAction',
+#'viewPrefix' => 'static',
+            ],
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
